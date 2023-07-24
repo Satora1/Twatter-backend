@@ -1,6 +1,6 @@
-package com.group3.twat.service.DAO;
+package com.group3.twat.model.post.service.DAO;
 
-import com.group3.twat.model.Twatt;
+import com.group3.twat.model.post.Twatt;
 
 import java.util.List;
 

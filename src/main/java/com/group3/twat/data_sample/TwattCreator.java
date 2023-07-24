@@ -1,6 +1,6 @@
 package com.group3.twat.data_sample;
 
-import com.group3.twat.service.DAO.TwattMemory;
+import com.group3.twat.model.post.service.DAO.TwattMemory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

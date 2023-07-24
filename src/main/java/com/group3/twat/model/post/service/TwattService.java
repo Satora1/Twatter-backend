@@ -1,7 +1,7 @@
-package com.group3.twat.service;
+package com.group3.twat.model.post.service;
 
-import com.group3.twat.service.DAO.TwattDao;
-import com.group3.twat.model.Twatt;
+import com.group3.twat.model.post.service.DAO.TwattDao;
+import com.group3.twat.model.post.Twatt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

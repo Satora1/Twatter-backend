@@ -1,7 +1,7 @@
 package com.group3.twat.controller;
 
-import com.group3.twat.service.TwattService;
-import com.group3.twat.model.Twatt;
+import com.group3.twat.model.post.service.TwattService;
+import com.group3.twat.model.post.Twatt;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
