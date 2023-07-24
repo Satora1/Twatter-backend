@@ -1,4 +1,4 @@
-package model;
+package com.group3.twat.model;
 
 
 import lombok.AllArgsConstructor;

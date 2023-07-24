@@ -1,11 +1,11 @@
-package service.DAO;
+package com.group3.twat.service.DAO;
 
-import model.Twatt;
+import com.group3.twat.model.Twatt;
 import org.springframework.stereotype.Repository;
-import service.DAO.TwattDao;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 @Repository
 public class TwattMemory implements TwattDao {
@@ -27,4 +27,17 @@ public class TwattMemory implements TwattDao {
     public void addTwatt(Twatt newTwatt) {
         twatts.add(newTwatt);
     }
+    @Override
+    public boolean  deleteTwattById(Long twattId){
+        Iterator<Twatt> iterator = twatts.iterator();
+        while (iterator.hasNext()) {
+            Twatt twatt = iterator.next();
+            if (twatt.getId().equals(twattId)) {
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
