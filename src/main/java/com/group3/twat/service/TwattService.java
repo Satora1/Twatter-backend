@@ -1,7 +1,7 @@
-package service;
+package com.group3.twat.service;
 
-import service.DAO.TwattDao;
-import model.Twatt;
+import com.group3.twat.service.DAO.TwattDao;
+import com.group3.twat.model.Twatt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +23,13 @@ public class TwattService {
     }
 
 
-
     public void addTwatt(Twatt newTwat) {
         twattDao.addTwatt(newTwat);
     }
 
-
+    public boolean deleteTwattById(Long twattId) {
+        {
+            return twattDao.deleteTwattById(twattId);
+        }
+    }
 }
