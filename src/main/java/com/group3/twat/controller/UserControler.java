@@ -28,6 +28,7 @@ public class UserControler {
         return userService.getUser();
     }
 
+
     @PostMapping("/user")
     public String addUser(@RequestBody User newUser) {
         userService.addUser(newUser);

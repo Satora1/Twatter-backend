@@ -2,6 +2,7 @@ package com.group3.twat.controller;
 
 import com.group3.twat.model.post.service.TwattService;
 import com.group3.twat.model.post.Twatt;
+import org.apache.coyote.Request;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.time.LocalDate;
 import java.util.List;
 @RestController
 public class TwattControler {
@@ -28,9 +30,10 @@ public class TwattControler {
     }
 
     @PostMapping("/twatts")
-    public String addTwatt(@RequestBody Twatt newTwatt) {
+    public ResponseEntity<?> addTwatt(@RequestBody Twatt newTwatt) {
         twattService.addTwatt(newTwatt);
-        return "redirect:/twatts";
+        System.out.println(newTwatt.getText());
+        return ResponseEntity.ok().build();
     }
 
 
