@@ -1,5 +1,7 @@
 package com.group3.twat.controller;
 
+import com.group3.twat.controller.requests.ValidationRequest;
+import com.group3.twat.controller.requests.ValidationResponse;
 import com.group3.twat.model.user.User;
 import com.group3.twat.model.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +37,10 @@ public class UserControler {
         return "redirect:/user";
     }
 
+    @PostMapping("/user/validate")
+    public ValidationResponse validate(@RequestBody ValidationRequest request){
+        System.out.println("Validate");
+        System.out.println(request.email() + " " + request.password());
+        return new ValidationResponse(true, true);
+    }
 }
