@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-public class TwattControler {
+public class TwattController {
 
 
 
         private final TwattService twattService;
 
         @Autowired
-        public TwattControler(TwattService twattService) {
+        public TwattController(TwattService twattService) {
             this.twattService = twattService;
         }
 
