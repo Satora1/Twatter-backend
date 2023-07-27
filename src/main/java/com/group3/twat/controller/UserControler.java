@@ -1,15 +1,14 @@
 package com.group3.twat.controller;
 
+import com.group3.twat.controller.requests.UserRegistrationRequest;
 import com.group3.twat.controller.requests.ValidationRequest;
 import com.group3.twat.controller.requests.ValidationResponse;
 import com.group3.twat.model.user.User;
 import com.group3.twat.model.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,10 +29,17 @@ public class UserControler {
         return userService.getUser();
     }
 
+    @GetMapping("/user/{id}")
+    public User getUserByID(@PathVariable Long id) {
+        System.out.println(id);
+        List<User> userList = userService.getUser();
+        return userList.stream().filter(e->e.getId()==id).findFirst().get();
+    }
+
 
     @PostMapping("/user")
-    public String addUser(@RequestBody User newUser) {
-        userService.addUser(newUser);
+    public String addUser(@RequestBody UserRegistrationRequest newUser) {
+        userService.addUser(new User(0, newUser.username(), newUser.email(), newUser.password()));
         return "redirect:/user";
     }
 

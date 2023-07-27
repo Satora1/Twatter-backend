@@ -29,6 +29,7 @@ public UserMemory (){
     public void addUser(User newUser) {
         String plainPassword = newUser.getPassword();
         String hashedPassword = hashPassword(plainPassword);
+        newUser.setId((user.get(user.size()-1).getId()+1));
         newUser.setPassword(hashedPassword);
         user.add(newUser);
     }

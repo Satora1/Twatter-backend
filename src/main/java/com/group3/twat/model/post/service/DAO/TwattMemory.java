@@ -13,8 +13,8 @@ public class TwattMemory implements TwattDao {
     private List<Twatt> twatts;
     public TwattMemory() {
         this.twatts = new ArrayList<>(Arrays.asList(
-                Twatt.builder().id(1L).userId(99L).text("super udany dzień").date(LocalDate.of(2023, 7, 24)).build(),
-                Twatt.builder().id(12L).userId(10L).text("lubię czekoladę").date(LocalDate.of(2022, 4, 2)).build()
+                Twatt.builder().id(1L).userId(1L).text("super udany dzień").date(LocalDate.of(2023, 7, 24)).build(),
+                Twatt.builder().id(12L).userId(1L).text("lubię czekoladę").date(LocalDate.of(2022, 4, 2)).build()
         ));
     }
 
