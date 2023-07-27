@@ -5,6 +5,9 @@ import com.group3.twat.model.post.Twatt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -20,6 +23,17 @@ public class TwattService {
 
     public List<Twatt> getAllTwats() {
         return twattDao.getTwatt();
+    }
+
+    public List<Twatt> getAllTwats(boolean isNewer){
+        List<Twatt> twattList = new ArrayList<>(twattDao.getTwatt());
+        Collections.sort(twattList, Comparator.comparing(Twatt::getDate));
+        if(isNewer) {
+            Collections.reverse(twattList);
+
+        }
+        System.out.println(twattList.get(0));
+        return twattList;
     }
 
 

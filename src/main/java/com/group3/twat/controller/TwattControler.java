@@ -26,7 +26,7 @@ public class TwattControler {
 
     @GetMapping("/twatts")
     public List<Twatt> getTwatts() {
-        return twattService.getAllTwats();
+        return twattService.getAllTwats(true);
     }
 
     @PostMapping("/twatts")
