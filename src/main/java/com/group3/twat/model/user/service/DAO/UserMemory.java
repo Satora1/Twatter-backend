@@ -13,7 +13,10 @@ private List<User> user ;
 
 public UserMemory (){
     this.user=new ArrayList<>(Arrays.asList(
-            User.builder().id(223L).email("test@wp.pl").username("chocolate").password("ziemniaki").build()
+
+
+            User.builder().id(1L).email("test@wp.pl").username("chocolate").password("ziemniaki").build()
+
     ));
 }
     @Override
