@@ -1,5 +1,6 @@
 package com.group3.twat.model.user.service;
 
+import com.group3.twat.model.group.Group;
 import com.group3.twat.model.user.User;
 import com.group3.twat.model.user.service.DAO.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,14 @@ public class UserService {
 
     public void addUser(User newUser) {
         userDao.addUser(newUser);
+    }
+
+
+    public void addUserToFriend(Long userId, Long friendId) {
+       userDao.addUserToFriend(userId, friendId);
+    }
+    public boolean removeUserFromFriends(Long userId, Long friendId) {
+        return userDao.removeUserFromFriends(userId, friendId);
     }
 
 }

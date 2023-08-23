@@ -6,6 +6,7 @@ import com.group3.twat.controller.requests.ValidationResponse;
 import com.group3.twat.model.user.User;
 import com.group3.twat.model.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -39,7 +40,12 @@ public class UserControler {
 
     @PostMapping("/user")
     public String addUser(@RequestBody UserRegistrationRequest newUser) {
-        userService.addUser(new User(0, newUser.username(), newUser.email(), newUser.password()));
+        User user = new User();
+        user.setUsername(newUser.username());
+        user.setEmail(newUser.email());
+        user.setPassword(newUser.password());
+
+        userService.addUser(user);
         return "redirect:/user";
     }
 
@@ -49,4 +55,32 @@ public class UserControler {
         System.out.println(request.email() + " " + request.password());
         return new ValidationResponse(true, true);
     }
+
+
+    @PostMapping("/user/{userId}/addFriend/{friendId}")
+    public ResponseEntity<String> addFriend(
+            @PathVariable Long userId,
+            @PathVariable Long friendId) {
+
+        try {
+            userService.addUserToFriend(userId, friendId);
+            return ResponseEntity.ok("Friend added successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to add friend");
+        }
+    }
+
+    @DeleteMapping("/user/{userId}/removeFriend/{friendId}")
+    public ResponseEntity<String> removeFriend(
+            @PathVariable Long userId,
+            @PathVariable Long friendId) {
+
+        boolean success = userService.removeUserFromFriends(userId, friendId);
+        if (success) {
+            return ResponseEntity.ok("Friend removed successfully");
+        } else {
+            return ResponseEntity.badRequest().body("Failed to remove friend");
+        }
+    }
+
 }
