@@ -16,8 +16,6 @@ import java.util.List;
 public class UserControler {
 
 
-
-
     private final UserService userService;
 
     @Autowired
@@ -40,6 +38,7 @@ public class UserControler {
 
     @PostMapping("/user")
     public String addUser(@RequestBody UserRegistrationRequest newUser) {
+
         User user = new User();
         user.setUsername(newUser.username());
         user.setEmail(newUser.email());
@@ -49,12 +48,7 @@ public class UserControler {
         return "redirect:/user";
     }
 
-    @PostMapping("/user/validate")
-    public ValidationResponse validate(@RequestBody ValidationRequest request){
-        System.out.println("Validate");
-        System.out.println(request.email() + " " + request.password());
-        return new ValidationResponse(true, true);
-    }
+
 
 
     @PostMapping("/user/{userId}/addFriend/{friendId}")
