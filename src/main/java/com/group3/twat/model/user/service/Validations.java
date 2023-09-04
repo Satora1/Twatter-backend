@@ -4,6 +4,8 @@ import com.group3.twat.model.user.User;
 import com.group3.twat.model.user.service.DAO.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class Validations {
 
@@ -59,7 +61,7 @@ public class Validations {
     }
 
     private boolean emailExistsInDatabase(String email, UserRepository userRepository) {
-        User existingUser = userRepository.findByEmail(email);
-        return existingUser != null;
+        Optional<User> existingUser = userRepository.findByEmail(email);
+        return existingUser.isPresent();
     }
 }
