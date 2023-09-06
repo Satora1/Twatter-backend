@@ -7,10 +7,12 @@ import com.group3.twat.model.user.User;
 import com.group3.twat.model.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 public class UserControler {
@@ -22,7 +24,7 @@ public class UserControler {
     public UserControler(UserService userService) {
         this.userService = userService;
     }
-
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/user")
     public List<User> getUser() {
         return userService.getUser();
@@ -34,20 +36,6 @@ public class UserControler {
         List<User> userList = userService.getUser();
         return userList.stream().filter(e->e.getId()==id).findFirst().get();
     }
-
-
-    @PostMapping("/user")
-    public String addUser(@RequestBody UserRegistrationRequest newUser) {
-
-        User user = new User();
-        user.setUsername(newUser.username());
-        user.setEmail(newUser.email());
-        user.setPassword(newUser.password());
-
-        userService.addUser(user);
-        return "redirect:/user";
-    }
-
 
 
 
