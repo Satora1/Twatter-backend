@@ -4,8 +4,7 @@
 
 # TWITTER CLONE (BACKEND)
 
-This is a server application for the twitter clone site.
-- Client application: https://github.com/CodecoolGlobal/epg-2-java-AceOfSnakes60
+
 
 
 ## Authors
